@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var passport = require('passport');
 var LinkedInStrategy = require('passport-linkedin').Strategy
+var authRoutes = require('./routes/auth')
 
 var app = express();
 
@@ -58,6 +59,7 @@ passport.deserializeUser(function(user, done) {
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/', authRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
